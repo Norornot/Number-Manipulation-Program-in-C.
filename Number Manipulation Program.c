@@ -1,9 +1,21 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-
+#include <time.h>
+#include <unistd.h>
 int prod=1,sum=0,rem,tmp;
+
+int reverse(int x){
+	sum=0;
+	tmp=x;
+	while(tmp>0){
+		rem=tmp % 10;
+		sum=sum*10+rem;
+		tmp=tmp/10;
+	}
+		return sum;
+
+}
 
 int rev(int x){
 	sum=0;
@@ -145,9 +157,9 @@ int isPsquare(int x){
 	
 }
 int print(){
-	int num;
-	printf("\t\t\t\t\tEnter a number:");
-	scanf("%d",&num);
+	int num,dummy;
+	printf("\t\t\t\t\tEnter a number:");fflush(stdin);
+	scanf("%d%c",&num,&dummy);
 	return num;
 }
 	
@@ -157,8 +169,8 @@ int main(){
 	int num,digit,choose;
 	char ch='y';
 	while(ch=='y' ||ch=='Y'){
-		system('cls');
-			printf("\n\n\n\n\t\t\t\t*---Number Manipulation Programs---*\n");
+	
+	printf("\n\n\n\n\t\t\t\t*---Number Manipulation Programs---*\n");
 	printf("\n\t\t\t\t\t1.Reverse a number.");
 	printf("\n\t\t\t\t\t2.Sum of all digit.");
 	printf("\n\t\t\t\t\t3.Product of all digit.");
@@ -174,7 +186,7 @@ int main(){
 	scanf("%d",&choose);
 	switch(choose){
 		case 1:num=print();
-				printf("Reverse:%d.",rev(num));break;
+				printf("\t\t\t\t\tReverse:%d.",reverse(num));break;
 		case 2:num=print();
 				printf("\n\t\t\t\t\tSum of all digit of %d is %d.",num,add(num));break;
 		case 3:num=print();
@@ -199,9 +211,11 @@ int main(){
 				isPsquare(num);
 	}
 	
-	sleep(1);fflush(stdin);
-	printf("\n\n\t\t\t\t\tDo you want to continue?[Y-N]:");
+	sleep(1);
+	fflush(stdin);
+	printf("\n\n\t\t\t\t\tDo you want to continue?[Y-N]:");fflush(stdin);
 	scanf("%c",&ch);
+	system("cls");
 	}
 	
 	return 0;
